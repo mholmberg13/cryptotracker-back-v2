@@ -16,7 +16,7 @@ mongoose.connection.on('error', err => console.log(err.message + 'is Mongod not 
 mongoose.connection.on('diconnected', () => console.log('mongo disconnect'));
 
 // mongoose connection
-mongoose.connect('mongodb://localhost:27017/cryptowatch', {useNewParser: true})
+mongoose.connect('mongodb://localhost:27017/cryptowatch', {useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.once('open', ()=> {
     console.log('connected to mongoose...');
 })
@@ -53,7 +53,6 @@ app.use(cors());
 // Mount the routes from users controller
 app.use('/crypto', usersController)
 app.use('/sessions', sessionsController)
-
 
 // web server
 app.listen(PORT, () => {

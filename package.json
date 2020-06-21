@@ -1,6 +1,9 @@
 {
   "name": "cryptotracker-back-v2",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.15.0"
+  },
   "description": "",
   "main": "server.js",
   "scripts": {

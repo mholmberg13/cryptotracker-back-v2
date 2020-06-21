@@ -3,6 +3,17 @@ const users = express.Router();
 const User = require("../models/user.js");
 const bcrypt = require("bcrypt");
 
+
+// // INDEX
+// users.get('/', (req, res) => {
+//     User.find({}, (err, foundUsers) => {
+//       if (err) {
+//         res.status(400).json({ error: err.message })
+//       }
+//       res.status(200).json(foundUsers)
+//     })
+// })
+
 users.post("/", (req, res) => {
   console.log(req.body);
   req.body.password = bcrypt.hashSync(
