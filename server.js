@@ -55,7 +55,7 @@ const whitelist = [
       }
     },
   };
-app.use(cors());
+// app.use(cors());
 
 // Mount the routes from users controller
 app.use('/crypto', usersController)
