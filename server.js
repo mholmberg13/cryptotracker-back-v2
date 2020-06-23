@@ -22,12 +22,6 @@ mongoose.connection.once('open', ()=> {
 })
 
 // middleware
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
-
 app.use(express.json());
 
 // Secret for authentication/session:
@@ -55,7 +49,7 @@ const whitelist = [
       }
     },
   };
-app.use(cors(corsOptions));
+app.use(cors());
 
 // Mount the routes from users controller
 app.use('/crypto', usersController)
