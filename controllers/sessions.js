@@ -5,7 +5,8 @@ const cors = require('cors');
 
 const User = require("../models/user.js");
 
-router.post("/", cors(), (req, res) => {
+router.post("/", (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://cryptotrack.herokuapp.com');
   User.findOne({ username: req.body.username }, (err, foundUser) => {
     console.log(foundUser)
     console.log(req.body.password, foundUser.password)
@@ -23,6 +24,7 @@ router.post("/", cors(), (req, res) => {
 });
 
 router.delete("/", cors(), (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://cryptotrack.herokuapp.com');
   req.session.destroy(() => {
     res.status(200);
   });

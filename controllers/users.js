@@ -16,6 +16,7 @@ const cors = require('cors');
 // })
 
 users.post("/", cors(), (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://cryptotrack.herokuapp.com');
   console.log(req.body);
   req.body.password = bcrypt.hashSync(
     req.body.password,
@@ -30,6 +31,7 @@ users.post("/", cors(), (req, res) => {
 
 // GET USER
 users.get('/:id', cors(), (req,res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://cryptotrack.herokuapp.com');
     User.findById(req.params.id, (err,foundUser) => {
         if(err) {
             res.status(400).json({error: err.message})
@@ -50,6 +52,7 @@ users.get('/:id', cors(), (req,res) => {
 
 // DELETE USER
 users.delete('/:id', cors(), (req,res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://cryptotrack.herokuapp.com');
     User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
         if(err) {
             res.status(400).json({error: err.message})
@@ -60,6 +63,7 @@ users.delete('/:id', cors(), (req,res) => {
 
 // UPDATE USER INFO
 users.put('/:id', cors(), (req,res) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://cryptotrack.herokuapp.com');
     User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
         if (err) {
             res.status(400).json({error: err.message})
