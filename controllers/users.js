@@ -2,6 +2,7 @@ const express = require('express');
 const users = express.Router();
 const User = require("../models/user.js");
 const bcrypt = require("bcrypt");
+const cors = require('cors');
 
 
 // // INDEX
@@ -58,7 +59,7 @@ users.delete('/:id', (req,res) => {
 })
 
 // UPDATE USER INFO
-users.put('/:id', (req,res) => {
+users.put('/:id', cors(corsOptionsDelegate), (req,res) => {
     User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
         if (err) {
             res.status(400).json({error: err.message})

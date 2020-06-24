@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const cors = require('cors');
 
 const User = require("../models/user.js");
 
-router.post("/", (req, res) => {
+router.post("/", cors(corsOptionsDelegate), (req, res) => {
   User.findOne({ username: req.body.username }, (err, foundUser) => {
     console.log(foundUser)
     console.log(req.body.password, foundUser.password)
@@ -21,7 +22,7 @@ router.post("/", (req, res) => {
   });
 });
 
-router.delete("/", (req, res) => {
+router.delete("/", cors(corsOptionsDelegate), (req, res) => {
   req.session.destroy(() => {
     res.status(200);
   });
