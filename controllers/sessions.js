@@ -5,7 +5,7 @@ const cors = require('cors');
 
 const User = require("../models/user.js");
 
-router.post("/", cors(corsOptionsDelegate), (req, res) => {
+router.post("/", cors(), (req, res) => {
   User.findOne({ username: req.body.username }, (err, foundUser) => {
     console.log(foundUser)
     console.log(req.body.password, foundUser.password)
@@ -22,7 +22,7 @@ router.post("/", cors(corsOptionsDelegate), (req, res) => {
   });
 });
 
-router.delete("/", cors(corsOptionsDelegate), (req, res) => {
+router.delete("/", cors(), (req, res) => {
   req.session.destroy(() => {
     res.status(200);
   });

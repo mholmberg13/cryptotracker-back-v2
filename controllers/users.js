@@ -15,7 +15,7 @@ const cors = require('cors');
 //     })
 // })
 
-users.post("/", (req, res) => {
+users.post("/", cors(), (req, res) => {
   console.log(req.body);
   req.body.password = bcrypt.hashSync(
     req.body.password,
@@ -29,7 +29,7 @@ users.post("/", (req, res) => {
 });
 
 // GET USER
-users.get('/:id', (req,res) => {
+users.get('/:id', cors(), (req,res) => {
     User.findById(req.params.id, (err,foundUser) => {
         if(err) {
             res.status(400).json({error: err.message})
@@ -49,7 +49,7 @@ users.get('/:id', (req,res) => {
 // })
 
 // DELETE USER
-users.delete('/:id', (req,res) => {
+users.delete('/:id', cors(), (req,res) => {
     User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
         if(err) {
             res.status(400).json({error: err.message})
@@ -59,7 +59,7 @@ users.delete('/:id', (req,res) => {
 })
 
 // UPDATE USER INFO
-users.put('/:id', cors(corsOptionsDelegate), (req,res) => {
+users.put('/:id', cors(), (req,res) => {
     User.findByIdAndUpdate(req.params.id, req.body, (err, updatedUser) => {
         if (err) {
             res.status(400).json({error: err.message})
