@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const cors = require('cors');
 
-
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/cryptowatch';
 
 // controllers
 const usersController = require('./controllers/users.js');
@@ -17,7 +17,7 @@ mongoose.connection.on('error', err => console.log(err.message + 'is Mongod not 
 mongoose.connection.on('diconnected', () => console.log('mongo disconnect'));
 
 // mongoose connection
-mongoose.connect('mongodb://localhost:27017/cryptowatch', {useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.once('open', ()=> {
     console.log('connected to mongoose...');
 })
