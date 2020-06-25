@@ -2,7 +2,8 @@
   "name": "cryptotracker-back-v2",
   "version": "1.0.0",
   "engines": {
-    "node": "12.15.0"
+    "node": "12.15.0",
+    "npm": "6.15.5"
   },
   "description": "",
   "main": "server.js",
@@ -19,6 +20,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "method-override": "^3.0.0",
+    "mongodb": "^3.5.9",
     "mongoose": "^5.9.19"
   }
 }
